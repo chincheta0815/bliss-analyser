@@ -8,7 +8,7 @@ env:
 
 jobs:
   Linux_ffmpeg4:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout
@@ -34,7 +34,7 @@ jobs:
         path: releases/
 
   Linux_ffmpeg5:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout
@@ -53,7 +53,7 @@ jobs:
 
 
   Linux_ARM:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout
