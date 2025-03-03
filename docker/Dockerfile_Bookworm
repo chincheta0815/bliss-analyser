@@ -7,15 +7,17 @@ RUN dpkg --add-architecture arm64 && \
 RUN apt-get update
 RUN apt-get -y full-upgrade
 
-RUN apt-get install -y curl git yasm
-RUN apt-get install -y build-essential clang
-RUN apt-get install -y crossbuild-essential-armhf crossbuild-essential-arm64
+RUN apt-get install -y --no-install-recommends curl git yasm
+RUN apt-get install -y --no-install-recommends build-essential clang
+RUN apt-get install -y --no-install-recommends crossbuild-essential-armhf crossbuild-essential-arm64
 
-RUN apt-get install -y pkg-config:arm64 \
+RUN apt-get install -y --no-install-recommends \
+                       pkg-config:arm64 \
                        libavutil-dev:arm64 libavcodec-dev:arm64 libavformat-dev:arm64 \
                        libavfilter-dev:arm64 libavdevice-dev:arm64 libswresample-dev:arm64 libfftw3-dev:arm64
 
-RUN apt-get install -y pkg-config:armhf \
+RUN apt-get install -y --no-install-recommends \
+                       pkg-config:armhf \
                        libavutil-dev:armhf libavcodec-dev:armhf libavformat-dev:armhf \
                        libavfilter-dev:armhf libavdevice-dev:armhf libswresample-dev:armhf libfftw3-dev:armhf
 
