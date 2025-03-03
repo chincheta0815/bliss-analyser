@@ -61,8 +61,8 @@ jobs:
 
     - name: Build ARM on Bullseye
       run: |
-        docker build -t bliss-analyser-cross - < docker/Dockerfile_Bullseye
-        docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross
+        docker build -t bliss-analyser-cro-s_bullseye - < docker/Dockerfile_Bullseye
+        docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross-bullseye
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
@@ -72,8 +72,8 @@ jobs:
 
     - name: Build ARM on Bookworm
       run : |
-        docker build -t bliss-analyser-cross - < docker/Dockerfile_Bookworm
-        docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross
+        docker build -t bliss-analyser-cross-bookworm - < docker/Dockerfile_Bookworm
+        docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross-bookworm
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
