@@ -61,7 +61,7 @@ jobs:
 
     - name: Build ARM on Bullseye
       run: |
-        docker build -t bliss-analyser-cro-s_bullseye - < docker/Dockerfile_Bullseye
+        docker build -t bliss-analyser-cross-bullseye - < docker/Dockerfile_Bullseye
         docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross-bullseye
 
     - name: Upload artifacts
