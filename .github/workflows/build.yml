@@ -7,68 +7,12 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  Linux_ffmpeg4:
-    runs-on: ubuntu-24.04
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-
-    - name: Packages
-      run: sudo apt-get update && sudo apt-get install build-essential yasm libavutil-dev libavcodec-dev libavformat-dev libavfilter-dev libavdevice-dev libswresample-dev libfftw3-dev ffmpeg -y
- 
-    - name: Build
-      run: |
-        cargo build --release
-        strip target/release/bliss-analyser
-        mkdir releases
-        cp target/release/bliss-analyser releases/bliss-analyser
-        cp UserGuide.md releases/README.md
-        cp LICENSE releases/
-        cp configs/linux.ini releases/config.ini
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: bliss-analyser-linux-x86-ffmpeg4
-        path: releases/
-
-  Linux_ffmpeg5:
-    runs-on: ubuntu-24.04
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: Build ffmpeg5 version with Docker
-      run: |
-        docker build -t bliss-analyser-linux-x86-ffmpeg5 - < docker/Dockerfile_Ubuntu
-        docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-linux-x86-ffmpeg5
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: bliss-analyser-linux-x86-ffmpeg5
-        path: releases/
-
-
   Linux_ARM:
     runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-
-    - name: Build ARM on Bullseye
-      run: |
-        docker build -t bliss-analyser-cross-bullseye - < docker/Dockerfile_Bullseye
-        docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross-bullseye
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: bliss-analyser-linux-arm-bullseye
-        path: releases/
 
     - name: Build ARM on Bookworm
       run : |
