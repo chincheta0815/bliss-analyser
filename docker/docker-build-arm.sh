@@ -20,7 +20,7 @@ function build {
 	$2 /build/$1/release/bliss-analyser && cp /build/$1/release/bliss-analyser $DESTDIR/$3
 }
 
-#build arm-unknown-linux-gnueabihf arm-linux-gnueabihf-strip bin/bliss-analyser-armhf
+build arm-unknown-linux-gnueabihf arm-linux-gnueabihf-strip bin/bliss-analyser-armhf
 build aarch64-unknown-linux-gnu aarch64-linux-gnu-strip bin/bliss-analyser-aarch64
 
 cp UserGuide.md $DESTDIR/README.md
