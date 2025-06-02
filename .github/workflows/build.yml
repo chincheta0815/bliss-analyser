@@ -200,7 +200,7 @@ jobs:
 
     - name: Build ARM libav on Bookworm
       run : |
-        docker build -pull --np-cache -t bliss-analyser-cross - < docker/Dockerfile_Bookworm_libav
+        docker build --pull --no-cache -t bliss-analyser-cross - < docker/Dockerfile_Bookworm_libav
         docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross
 
     - name: Upload artifacts
