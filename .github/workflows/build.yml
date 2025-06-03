@@ -142,23 +142,28 @@ jobs:
 #        path: releases/
 
 
-#  Linux_ffmpeg_arm:
-#    runs-on: ubuntu-22.04
+  Linux_ffmpeg_arm:
+    runs-on: ubuntu-22.04
 
-#    steps:
-#    - name: Checkout
-#      uses: actions/checkout@v4
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
 
 #    - name: Build ARM ffmpeg on Debian
 #      run: |
 #        docker build -t bliss-analyser-cross - < docker/Dockerfile_Bullseye_ffmpeg
 #        docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross
 
-#    - name: Upload artifacts
-#      uses: actions/upload-artifact@v4
-#      with:
-#        name: bliss-analyser-linux-arm-ffmpeg
-#        path: releases/
+    - name: Build ARM ffmpeg on Debian
+      run: |
+        docker build -t bliss-analyser-cross - < docker/Dockerfile_Bookworm_ffmpeg
+        docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: bliss-analyser-debian-bookworm-arm-ffmpeg
+        path: releases/
 
 
 #  Linux_static_arm:
