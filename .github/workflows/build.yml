@@ -156,7 +156,7 @@ jobs:
 
     - name: Build ARM ffmpeg on Debian
       run: |
-        docker build -t bliss-analyser-cross - < docker/Dockerfile_Bookworm_ffmpeg
+        docker build --pull --no-cache -t bliss-analyser-cross - < docker/Dockerfile_Bookworm_ffmpeg
         docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross
 
     - name: Upload artifacts
