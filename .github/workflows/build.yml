@@ -154,7 +154,7 @@ jobs:
 #        docker build -t bliss-analyser-cross - < docker/Dockerfile_Bullseye_ffmpeg
 #        docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross
 
-    - name: Build ARM ffmpeg on Debian
+    - name: Build ARM ffmpeg on Bookworm
       run: |
         docker build --pull --no-cache -t bliss-analyser-cross - < docker/Dockerfile_Bookworm_ffmpeg
         docker run --rm -v $PWD/target:/build -v $PWD:/src bliss-analyser-cross
